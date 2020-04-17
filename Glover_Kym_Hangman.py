@@ -10,20 +10,29 @@ print ("")
 
 #wait for 1 second
 time.sleep(1)
-
+# import random to randomly select a word from wordlist file
+import random
 print ("Time to start guessing, you get 7 chances...")
 time.sleep(0.5)
-# import random to randomly select a word from wordlist
-import random
-#here we set the word list
-wordlist = ("billion")
-random.choice (wordlist)
+# here we set the word list
+with open("word_list.txt") as word_list:
+    word = random.choice(word_list.readlines())
+
+random.choice (word_list)
+for item in word_list:
+    if item in word_list:
+        continue
+    else:
+        word_list(item)
+
 #creates an variable with an empty value
 guesses = ''
 
 #determine the number of turns
 turns = 7
+
 # Create a while loop
+
 #check if the turns are more than zero
 while turns > 0:         
 
@@ -31,7 +40,7 @@ while turns > 0:
     failed = 0             
 
     # for every character in wordlist   
-    for char in wordlist:      
+    for char in word_list.txt:      
 
     # see if the character is in the players guess
         if char in guesses:    
@@ -59,13 +68,13 @@ while turns > 0:
     print
 
     # ask the user go guess a character
-    guess = input("Please enter your next guess:") 
+    guess = input("Please enter your guess:") 
 
     # set the players guess to guesses
     guesses += guess                    
 
     # if the guess is not found in the wordlist
-    if guess not in wordlist:  
+    if guess not in word_list.txt:  
  
      # turns counter decreases with 1 (now 9)
         turns -= 1        
@@ -80,5 +89,4 @@ while turns > 0:
         if turns == 0:           
     
         # print "You Lose"
-            print ("You Lose")
-            
+            print ("You Lose")       
